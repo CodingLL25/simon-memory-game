@@ -57,7 +57,7 @@ describe("newGame works correctly", () => {
     });
     test("expect data-listener to be true", () => {
         newGame();
-        const elements = document.getElementsByClassName("circle");
+        const elements = document.getElementsByClassaddName("circle");
         for (let element of elements) {
             expect(element.getAttribute("data-listener")).toEqual("true");
         }
