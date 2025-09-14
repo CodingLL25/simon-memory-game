@@ -5,7 +5,8 @@
 const {
     game,
     newGame,
-    showScore
+    showScore,
+    addTurn,
 } = require("../game");
 
 
@@ -49,8 +50,8 @@ describe("newGame works correctly", () => {
     test("player moves length should be equal to zero", () => {
         expect(game.playerMoves.length).toBe(0);
     });
-    test("current game length should be equal to zero", () => {
-        expect(game.currentGame.length).toBe(0);
+    test("should be one element in the computer array", () => {
+        expect(game.currentGame.length).toBe(1);
     });
     test("should display 0 for the element with id of score", () => {
         expect(document.getElementById("score").innerText).toEqual(0);
