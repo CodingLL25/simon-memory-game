@@ -3,7 +3,9 @@
  */
 
 const {
-    game
+    game,
+    newGame,
+    showScore
 } = require("../game");
 
 
@@ -29,5 +31,28 @@ describe("game object contains correct keys", () => {
     });
     test("choices contains the correct ids", () => {
         expect(game.choices).toEqual(["button1", "button2", "button3", "button4"]);; // the choices array has the buttons
+    });
+});
+
+describe("newGame works correctly", () => {
+    beforeAll(() => {
+        game.score = 42;
+        game.playerMoves = ["button1", "button2"];
+        game.currentGame = ["button1", "button2"];
+        document.getElementById("score").innerText = "42";
+        newGame();
+    })
+
+    test("should set the game score to zero", () => {
+        expect(game.score).toEqual(0); // checks if the game score has been reset to 0
+    });
+    test("player moves length should be equal to zero", () => {
+        expect(game.playerMoves.length).toBe(0);
+    });
+    test("current game length should be equal to zero", () => {
+        expect(game.currentGame.length).toBe(0);
+    });
+    test("should display 0 for the element with id of score", () => {
+        expect(document.getElementById("score").innerText).toEqual(0);
     });
 });
